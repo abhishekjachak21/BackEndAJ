@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 
 // Route to render the profile page
 app.get('/profile', (req, res) => {
-    res.render('profile', { username: 'Abhishek Jachak', age: 21 });
+    res.render('profile', { username: 'Abhisshek Jachak', age: 21 });
 });
 
 // Start the server
