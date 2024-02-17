@@ -19,6 +19,7 @@ A] Full Stack Developer
 -> Revision FTend (JavaScript, HTML, CSS)
 
 B] Problem Solving SKill(already running from past 1 year)
+
 -> Normal DSA (Arr, Str, Sorting, LL, StakQue, Recursion problems)
 -> Basic Problems (company, tcs, accenture)
 
