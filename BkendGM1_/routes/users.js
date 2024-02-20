@@ -12,3 +12,6 @@ const userschema = mongoose.Schema({
 //naam -> collection like redmi, vivo, realme
 //schema -> mi11 or vivo3A or realmeC2
 module.exports = mongoose.model("user",userschema);
+
+
+//sudo service mongod start //command for terminal mongodb
