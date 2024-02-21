@@ -6,6 +6,9 @@ var logger = require('morgan');
 var expressSession = require('express-session');
 const flashh = require('connect-flash');
 
+const passport = require('passport')
+// const localStrategy = require('passport-local')
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -18,8 +21,14 @@ app.set('view engine', 'ejs');
 app.use(expressSession({
   resave: false,
   saveUninitialized: false,
-  secret: "hitoday19febyo"
+  secret: "hitoday21febyo"
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.serializeUser(usersRouter.serializeUser())
+passport.deserializeUser(usersRouter.deserializeUser())
+
 
 app.use(flashh());
 
