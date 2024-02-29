@@ -10,3 +10,5 @@ export default defineConfig({
   },
   plugins: [react()],
 })
+
+//Proxy Forwards Request: The proxy forwards the request to the appropriate destination server based on its configuration or rules. This server could be another web server, an API server, or any other type of server.
