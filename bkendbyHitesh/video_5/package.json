@@ -1,0 +1,16 @@
+{
+  "name": "bkendd",
+  "version": "1.0.0",
+  "description": "this is code for professional setup for bakend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chai",
+    "bkend",
+    "js"
+  ],
+  "author": "Abhi Jack",
+  "license": "ISC"
+}
