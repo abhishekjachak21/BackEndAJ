@@ -4,6 +4,7 @@ import {ApiError} from '../utils/ApiError.js'
 import {User} from "../models/user.model.js"
 import {uploadOnCloudinary} from "../utils/cloudinary.js"
 import { ApiResponse } from '../utils/ApiResponse.js'
+import jwt from 'jsonwebtoken';
     
 
 const generateAccessAndRefereshTokens = async(userId) =>{
@@ -22,7 +23,6 @@ const generateAccessAndRefereshTokens = async(userId) =>{
         throw new ApiError(500, "Something went wrong while generating referesh and access token")
     }
 }
-
 
 
 const registerUser = asyncHandler( async (req, res) => {
