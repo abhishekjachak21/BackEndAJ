@@ -11,6 +11,10 @@ app.get('/',(req,res)=>{
     res.send("server is ready");
 })
 
+app.get('/yes',(req,res)=>{
+    res.send("<h1>hi bruh<h1>");
+})
+
 app.get('/api/jokes',(req,res)=>{
     const jokes = [
         {

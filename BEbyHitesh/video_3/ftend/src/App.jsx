@@ -12,7 +12,8 @@ function App() {
   const [jokes, setJokes] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3002/api/jokes')
+    // axios.get('http://localhost:3002/api/jokes')  //use this if u use cors pkg
+    axios.get('/api/jokes')    //if not then use proxy instead
       .then((response) => {
         setJokes(response.data);
       })
@@ -23,7 +24,7 @@ function App() {
 
   return (
     <>
-      <h1>Love You !</h1>
+      <h1> Be Love AND Compassion!</h1>
       <p>JOKES: {jokes.length}</p>
       {
         jokes.map((joke, index) => (
