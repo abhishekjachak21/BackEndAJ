@@ -1,25 +1,33 @@
-import mongoose, {Schema} from "mongoose";
-// import bcrypt from "bcrypt";
-// import jwt from "jsonwebtoken"
-
 // models/task.model.js
+import mongoose from 'mongoose';
 
-const taskSchema = new Schema({
+const taskSchema = new mongoose.Schema({
   writeTask: {
     type: String,
-    required: [true, "task is reqd"]
+    required: [true, "Task is required"]
   },
   targetTime: {
     type: Number,
-    required:  [true, "time is reqd"]
+    required:  [true, "Target time is required"]
+  },
+  actualTime: {
+    type: Number,
+    default: undefined,
   },
   completed: {
     type: Boolean,
     default: false
+  },
+  taskId:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:"Task"
   }
 }, { timestamps: true });
 
-export const Task = mongoose.model('Task', taskSchema);
+const Task = mongoose.model('Task', taskSchema);
+
+export default Task;
+
 
 
 

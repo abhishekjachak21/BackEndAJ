@@ -12,9 +12,9 @@ export const getAllTasks = asyncHandler(async (req, res) => {
 
 // Add a new task
 export const addTask = asyncHandler(async (req, res) => {
-  const { text, targetTime, completed } = req.body;
-  const task = await Task.create({ text, targetTime, completed });
-  res.status(201).json(task);
+  const { writeTask, targetTime, completed } = req.body;
+  const task = await Task.create({ writeTask, targetTime, completed });
+  res.status(200).json(task);
 });
 
 // Delete a task
@@ -29,12 +29,12 @@ export const deleteTask = asyncHandler(async (req, res) => {
 
 // // Update a task
 // export const updateTask = asyncHandler(async (req, res) => {
-//   const { text, targetTime, completed } = req.body;
+//   const { writeTask, targetTime, completed } = req.body;
 //   let task = await Task.findById(req.params.id);
 //   if (!task) {
 //     throw new ApiError(404, 'Task not found');
 //   }
-//   if (text) task.text = text;
+//   if (writeTask) task.writeTask = writeTask;
 //   if (targetTime) task.targetTime = targetTime;
 //   if (completed !== undefined) task.completed = completed;
 //   task = await task.save();
