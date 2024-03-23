@@ -15,16 +15,14 @@ app.use(express.static("public"))
 app.use(cookieParser())
 
 
-//routes import
 import router from './routes/task.routes.js'
 
+app.use("/api/tasks", router)     //routes declaration
 
-//routes declaration
-app.use("/api/tasks", router)
+// http://localhost:3002/api/tasks/getAllTasks
+// http://localhost:3002/api/tasks/addTask
+// http://localhost:3002/api/tasks/deleteTask
 
-// http://localhost:8000/api/tasks/getAllTasks
-// http://localhost:8000/api/tasks/addTask
-// http://localhost:8000/api/tasks/deleteTask
-// http://localhost:8000/api/tasks/updateTask
+// http://localhost:3002/api/tasks/updateTask
 
 export { app }
