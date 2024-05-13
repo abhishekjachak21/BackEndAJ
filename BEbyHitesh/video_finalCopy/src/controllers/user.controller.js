@@ -18,7 +18,6 @@ const generateAccessAndRefereshTokens = async(userId) =>{
 
         return {accessToken, refreshToken}
 
-
     } catch (error) {
         throw new ApiError(500, "Something went wrong while generating referesh and access token")
     }
@@ -36,13 +35,15 @@ const registerUser = asyncHandler( async (req, res) => {
     // return res
 
 
+
     const {fullName, email, username, password } = req.body
     //console.log("email: ", email);
 
     if (
-        [fullName, email, username, password].some((field) => field?.trim() === "")
+        [fullName, email, username, password]
+        .some((field) => field?.trim() === "")
     ) {
-        throw new ApiError(400, "All fields are required")
+        throw new ApiError(409, "All fields are required")
     }
 
     const existedUser = await User.findOne({
@@ -55,7 +56,7 @@ const registerUser = asyncHandler( async (req, res) => {
     //console.log(req.files);
 
     const avatarLocalPath = req.files?.avatar[0]?.path;
-    //const coverImageLocalPath = req.files?.coverImage[0]?.path;
+    // const coverImageLocalPath = req.files?.coverImage[0]?.path;
 
     let coverImageLocalPath;
     if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
@@ -98,6 +99,9 @@ const registerUser = asyncHandler( async (req, res) => {
 
 } )
 
+
+
+
 const loginUser = asyncHandler(async (req, res) =>{
     // req body -> data
     // username or email
@@ -108,9 +112,11 @@ const loginUser = asyncHandler(async (req, res) =>{
 
     const {email, username, password} = req.body
     console.log(email);
+    console.log(username);
+    console.log(password);
 
-    if (!username && !email) {
-        throw new ApiError(400, "username or email is required")
+    if (!(username || email)) {
+        throw new ApiError(400, "username or emaill is required")
     }
     
     // Here is an alternative of above code based on logic discussed in video:
@@ -139,7 +145,7 @@ const loginUser = asyncHandler(async (req, res) =>{
 
     const options = {
         httpOnly: true,
-        secure: true
+        secure: true          
     }
 
     return res
@@ -157,6 +163,8 @@ const loginUser = asyncHandler(async (req, res) =>{
     )
 
 })
+
+
 
 const logoutUser = asyncHandler(async(req, res) => {
     await User.findByIdAndUpdate(
@@ -182,6 +190,7 @@ const logoutUser = asyncHandler(async(req, res) => {
     .clearCookie("refreshToken", options)
     .json(new ApiResponse(200, {}, "User logged Out"))
 })
+
 
 const refreshAccessToken = asyncHandler(async (req, res) => {
     const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken
@@ -231,6 +240,7 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
 
 })
 
+
 const changeCurrentPassword = asyncHandler(async(req, res) => {
     const {oldPassword, newPassword} = req.body
 
@@ -262,6 +272,7 @@ const getCurrentUser = asyncHandler(async(req, res) => {
     ))
 })
 
+
 const updateAccountDetails = asyncHandler(async(req, res) => {
     const {fullName, email} = req.body
 
@@ -285,6 +296,7 @@ const updateAccountDetails = asyncHandler(async(req, res) => {
     .status(200)
     .json(new ApiResponse(200, user, "Account details updated successfully"))
 });
+
 
 const updateUserAvatar = asyncHandler(async(req, res) => {
     const avatarLocalPath = req.file?.path
@@ -318,6 +330,7 @@ const updateUserAvatar = asyncHandler(async(req, res) => {
         new ApiResponse(200, user, "Avatar image updated successfully")
     )
 })
+
 
 const updateUserCoverImage = asyncHandler(async(req, res) => {
     const coverImageLocalPath = req.file?.path
