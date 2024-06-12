@@ -3,6 +3,8 @@ import userModel from "../models/userModel.js";
 import { createTransport } from 'nodemailer';
 import dotenv from "dotenv";
 dotenv.config();
+
+
 const sendMail = (email, subject, title, description) => {
     var transporter = createTransport({
         service: 'gmail',
