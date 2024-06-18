@@ -130,3 +130,6 @@ dist
 .pnp.*
 
 node_modules
+clgMernProjj/express-mongoDB/mongo-connection-test.js
+clgMernProjj/express-mongoDB/connectionTest.js
+clgMernProjj/express-mongoDB/express-mongo.js
