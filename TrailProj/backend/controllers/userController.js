@@ -32,10 +32,10 @@ const registerUser = async (req,res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt)
 
-        const newUser = new userModel({name, email, password: hashedPassword})
-        const user = await newUser.save()
+        const newUser = new userModel({name, email, password: hashedPassword}) //new userModel istemaal karna hota h bhai
+        const user = await newUser.save() //imp bhai, isse newuser save hota h apne db mei...
         const token = createToken(user._id)
-        res.status(200).json({user,token})
+        res.status(200).json({user,token});
 
     } catch(error){
         res.status(500).json({message: error.message})
@@ -60,7 +60,7 @@ const loginUser = async (req,res) => {
             return res.status(400).json({message: "Invalid credentials"})
         }
         const token = createToken(user._id)
-        res.status(200).json({user,token})
+        res.status(200).json({user,token})  //{ user, token } is shorthand for { user: user, token: token }
     } catch (error) {
         res.status(500).json({message: error.message})
     }
