@@ -34,8 +34,8 @@ const registerUser = async (req,res) => {
 
         const newUser = new userModel({name, email, password: hashedPassword}) //new userModel istemaal karna hota h bhai
         const user = await newUser.save() //imp bhai, isse newuser save hota h apne db mei...
-        const token = createToken(user._id)
-        res.status(200).json({user,token});
+        const token = createToken(user._id)  //token ke loye JWT istemaal karna hota h
+        res.status(200).json({user,token});  //its like user:user as user only
 
     } catch(error){
         res.status(500).json({message: error.message})
