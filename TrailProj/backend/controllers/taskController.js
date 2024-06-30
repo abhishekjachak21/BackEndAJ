@@ -30,25 +30,24 @@ const sendMail = (email, subject, title, description) => {
     });
 }
 const addTask = async (req, res) => {
-    const { title, description } = req.body;
-    const userId = req.user.id;
-    const user = await userModel.find({_id: userId});
-    const newTask = new taskModel({ title, description, completed: false, userId })
+    const { title, description } = req.body; // Extracting task details from the request body
+    const userId = req.user.id;  // Extracting userId from the authenticated user's request, Security: The req.body can be manipulated by the client, mhnun req.user je authenticated ahe, te use kara
+    const user = await userModel.find({_id: userId});  // Fetching user details using userId
+    const newTask = new taskModel({ title, description, completed: false, userId });  // Creating a new task associated with userId
+
     newTask.save()
         .then(() => {
-            sendMail(user[0].email, "Task Added", title, description)
-            return (res.status(200).json({ message: "Task added successfully" }))
+            sendMail(user[0].email, "Task Added", title, description);  // Sending email notification to the user
+            return res.status(200).json({ message: "Task added successfully" });  // Responding with success message
         })
         .catch((error) => {
-            return (
-                res.status(500).json({ message: error.message })
-            )
-        }
-        )
+            return res.status(500).json({ message: error.message });  // Responding with error message
+        });
 }
+
 const removeTask = (req, res) => {
     const { id } = req.body;
-    console.log("id: ", id);
+    // console.log("id: ", id);
     taskModel.findByIdAndDelete(id)
         .then(() => res.status(200).json({ message: "Task deleted successfully" }))
         .catch((error) => res.status(501).json({ message: error.message }))
@@ -60,3 +59,21 @@ const getTask = (req, res) => {
         .catch((error) => res.status(501).json({ message: error.message }))
 }
 export { addTask, getTask,removeTask }
+
+
+/*
+->Add task
+- extract title, desc of task
+- 
+
+
+->Remove Task
+
+
+->Get Task
+
+
+
+
+
+*/
