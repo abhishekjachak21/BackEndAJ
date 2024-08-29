@@ -1,8 +1,12 @@
- var os = require('os')
- var fs = require('fs')
+var express = require('express')
+var app = express();
 
- var user = os.userInfo()
+app.get('/', (req,res)=>{
+  res.send("Hi bhai, learning nodejs happily")
+})
 
- console.log(user.username);
- 
-// console.log("Abhi");
+app.get('/passion',(req,res)=>{              //  '/passion' is endpoint for server/waiter                                                                                                                                                                                                                                                                                                                                                   
+    res.send("yes, my passion is cooking")
+})
+
+app.listen(3000)
