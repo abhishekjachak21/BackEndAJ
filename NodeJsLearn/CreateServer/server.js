@@ -9,4 +9,6 @@ app.get('/passion',(req,res)=>{              //  '/passion' is endpoint for serv
     res.send("yes, my passion is cooking")
 })
 
+// var port=3000;
+// app.listen(`listerning on ${port}`,3000)
 app.listen(3000)
