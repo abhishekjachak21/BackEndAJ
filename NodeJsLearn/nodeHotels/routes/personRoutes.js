@@ -27,7 +27,7 @@ router.post('/signup', async (req, res) =>{
     }
     catch(err){
         console.log(err);
-        res.status(500).json({error: 'Internal Server Error'});
+        res.status(500).json({error: 'Internal Serveeeer Error'});
     }
 })
 
@@ -61,7 +61,8 @@ router.post('/login', async(req, res) => {
 });
 
 // Profile route
-router.get('/profile', jwtAuthMiddleware, async (req, res) => {
+// router.get('/profile', jwtAuthMiddleware, async (req, res) => {
+router.get('/profile', async (req, res) => {
     try{
         const userData = req.user;
         console.log("User Data: ", userData);
@@ -72,7 +73,7 @@ router.get('/profile', jwtAuthMiddleware, async (req, res) => {
         res.status(200).json({user});
     }catch(err){
         console.error(err);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({ error: 'Internal Serveeer Error' });
     }
 })
 

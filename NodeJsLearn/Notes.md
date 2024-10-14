@@ -17,12 +17,17 @@
   -> server=waiter, db=chef, menucard=api, dishes=endpoints
 
 
-# MongoDB
+# MongoDB tutorial
 - nodejs server, db server, mongodb, mongodb query, compass
 , send data from ftend to bkend, postman, connect nodejs to mongo, mongoose in node
 - both servers nodejs server & db server are different
 - Database Server: Manages and stores data.
 - Node.js Server: Handles requests, processes them, and interacts with databases to provide responses to clients.
+
+# MongoDB Schema
+- 
+
+
 
 
 
